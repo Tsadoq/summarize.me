@@ -36,7 +36,7 @@ class Recapper():
                 import pt_core_news_sm
                 self.model = pt_core_news_sm.load()
             else:
-                print("language not supported")
+                print(f"The {self.article.meta_lang} language is not supported")
             self.data = []
             self.vectorizer = TfidfVectorizer(strip_accents='unicode')
         except article.ArticleException:
@@ -70,7 +70,7 @@ class Recapper():
 
     def summarize(self, perc=0.3):
         try:
-            n_sentences = round(len(self.recap) * perc)
+            n_sentences = round(len(self.recap) * float(perc))
             self.summary = "\n".join(
                 (self.recap.loc[
                     (self.recap['Rank'] <= n_sentences) | (self.recap['Rank'] == self.recap["Rank"].iloc[0])])[

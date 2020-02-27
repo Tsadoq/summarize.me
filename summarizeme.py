@@ -36,7 +36,7 @@ def summarize(bot, update):
     else:
         txt = "Article received, processing, this process could take upt to 30 seconds"
         bot.send_message(chat_id=update.message.chat_id, text=txt)
-        r = recapper(url)
+        r = recapper.Recapper(url)
         r.process()
         recap = r.summarize(perc=perc)
         bot.send_message(chat_id=update.message.chat_id, text=recap)
