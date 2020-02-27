@@ -41,8 +41,8 @@ def summarize(bot, update):
         bot.send_message(chat_id=update.message.chat_id, text=f"<b>{r.article.title} -  RECAP</b>\n\n",
                          parse_mode=telegram.ParseMode.HTML)
         bot.send_message(chat_id=update.message.chat_id, text=recap)
-        #bot.send_message(chat_id=update.message.chat_id, text="\n\n<b>Most used Words</b>\n",
-        #                 parse_mode=telegram.ParseMode.HTML)
+        bot.send_message(chat_id=update.message.chat_id, text='\n\n <a href="https://www.paypal.com/cgi-bin/webscr'
+                                                              '?cmd=_s-xclick&hosted_button_id=7TJBHDJ5UQ4SJ&source=url">The Hosting of the bot is quite expensive, if you could help me pay it that would be great :)</a> ',parse_mode=telegram.ParseMode.HTML)
         r.get_info()
 
 
