@@ -1,8 +1,7 @@
+import telegram
 import recapper
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
-from io import BytesIO
-import requests
 import re
 
 
@@ -39,7 +38,13 @@ def summarize(bot, update):
         r = recapper.Recapper(url)
         r.process()
         recap = r.summarize(perc=perc)
+        bot.send_message(chat_id=update.message.chat_id, text=f"<b>{r.article.title} -  RECAP</b>\n\n",
+                         parse_mode=telegram.ParseMode.HTML)
         bot.send_message(chat_id=update.message.chat_id, text=recap)
+        #bot.send_message(chat_id=update.message.chat_id, text="\n\n<b>Most used Words</b>\n",
+        #                 parse_mode=telegram.ParseMode.HTML)
+        r.get_info()
+
 
 
 def main():
